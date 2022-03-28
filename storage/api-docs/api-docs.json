@@ -1,0 +1,1760 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Library Api",
+        "description": "Demo Library Api<br><br>Develped by <strong>Rafael Lessa de Castro Xavier</strong>",
+        "contact": {
+            "email": "rafaellessacastro@hotmail.com"
+        },
+        "version": "1.0"
+    },
+    "paths": {
+        "/api/book/all": {
+            "get": {
+                "tags": [
+                    "Book"
+                ],
+                "summary": "List Categories",
+                "operationId": "48e186c361dfc4e3705dc48ef88c5169",
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "rows": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "number",
+                                                        "example": "1"
+                                                    },
+                                                    "title": {
+                                                        "type": "string",
+                                                        "example": "example title"
+                                                    },
+                                                    "author": {
+                                                        "type": "string",
+                                                        "example": "example author"
+                                                    },
+                                                    "description": {
+                                                        "type": "string",
+                                                        "example": "example description"
+                                                    },
+                                                    "year_edition": {
+                                                        "type": "number",
+                                                        "example": "2022"
+                                                    },
+                                                    "price": {
+                                                        "type": "decimal",
+                                                        "example": "50.48"
+                                                    },
+                                                    "category_id": {
+                                                        "type": "number",
+                                                        "example": "1"
+                                                    },
+                                                    "updated_at": {
+                                                        "type": "string",
+                                                        "example": "2021-12-11T09:25:53.000000Z"
+                                                    },
+                                                    "created_at": {
+                                                        "type": "string",
+                                                        "example": "2021-12-11T09:25:53.000000Z"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/book/store": {
+            "post": {
+                "tags": [
+                    "Book"
+                ],
+                "summary": "Create Book",
+                "operationId": "fba15535c3a6c714cf87df22d4f6837a",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "": {
+                                        "properties": {
+                                            "title": {
+                                                "type": "string",
+                                                "example": "example title"
+                                            },
+                                            "author": {
+                                                "type": "string",
+                                                "example": "example author"
+                                            },
+                                            "description": {
+                                                "type": "string",
+                                                "example": "example description"
+                                            },
+                                            "year_edition": {
+                                                "type": "number",
+                                                "example": "2022"
+                                            },
+                                            "price": {
+                                                "type": "decimal",
+                                                "example": "50.48"
+                                            },
+                                            "category_id": {
+                                                "type": "number",
+                                                "example": "1"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "title": "example title",
+                                    "author": "example author",
+                                    "description": "example description",
+                                    "year_edition": "2022",
+                                    "price": "50.48",
+                                    "category_id": 1
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "number",
+                                            "example": 1
+                                        },
+                                        "author": {
+                                            "type": "string",
+                                            "example": "author"
+                                        },
+                                        "description": {
+                                            "type": "string",
+                                            "example": "description"
+                                        },
+                                        "year_edition": {
+                                            "type": "number",
+                                            "example": 2022
+                                        },
+                                        "price": {
+                                            "type": "number",
+                                            "format": "float",
+                                            "example": 15.85
+                                        },
+                                        "category_id": {
+                                            "type": "number",
+                                            "example": 1
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "example": "2021-12-11T09:25:53.000000Z"
+                                        },
+                                        "updated_at": {
+                                            "type": "string",
+                                            "example": "2021-12-11T09:25:53.000000Z"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Exception",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "msg": {
+                                            "type": "string",
+                                            "example": "Ops, Book not created."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/book/find/{id}": {
+            "get": {
+                "tags": [
+                    "Book"
+                ],
+                "summary": "Get Book Details",
+                "operationId": "59785806a8a4f43cccc233f2d081df65",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "number",
+                                            "example": 1
+                                        },
+                                        "author": {
+                                            "type": "string",
+                                            "example": "author"
+                                        },
+                                        "description": {
+                                            "type": "string",
+                                            "example": "description"
+                                        },
+                                        "year_edition": {
+                                            "type": "number",
+                                            "example": 2022
+                                        },
+                                        "price": {
+                                            "type": "number",
+                                            "format": "float",
+                                            "example": 15.85
+                                        },
+                                        "category_id": {
+                                            "type": "number",
+                                            "example": 1
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "example": "2021-12-11T09:25:53.000000Z"
+                                        },
+                                        "updated_at": {
+                                            "type": "string",
+                                            "example": "2021-12-11T09:25:53.000000Z"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/book/update/{id}": {
+            "put": {
+                "tags": [
+                    "Book"
+                ],
+                "summary": "Update Book",
+                "operationId": "8efe66240e63346aa97b4b772eea13d3",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "": {
+                                        "properties": {
+                                            "title": {
+                                                "type": "string",
+                                                "example": "example title"
+                                            },
+                                            "author": {
+                                                "type": "string",
+                                                "example": "example author"
+                                            },
+                                            "description": {
+                                                "type": "string",
+                                                "example": "example description"
+                                            },
+                                            "year_edition": {
+                                                "type": "number",
+                                                "example": "2022"
+                                            },
+                                            "price": {
+                                                "type": "decimal",
+                                                "example": "50.48"
+                                            },
+                                            "category_id": {
+                                                "type": "number",
+                                                "example": "1"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "title": "example title",
+                                    "author": "example author",
+                                    "description": "example description",
+                                    "year_edition": "2022",
+                                    "price": "50.48",
+                                    "category_id": 1
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        },
+        "/api/book/delete/{id}": {
+            "delete": {
+                "tags": [
+                    "Book"
+                ],
+                "summary": "Delete Book",
+                "operationId": "451b09c99cc466aa6567ca0047199465",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        },
+        "/api/category/all": {
+            "get": {
+                "tags": [
+                    "Category"
+                ],
+                "summary": "List Categories",
+                "operationId": "e16c3e295c795188fa231b005a10be1c",
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "rows": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "number",
+                                                        "example": "1"
+                                                    },
+                                                    "name": {
+                                                        "type": "string",
+                                                        "example": "example name"
+                                                    },
+                                                    "updated_at": {
+                                                        "type": "string",
+                                                        "example": "2021-12-11T09:25:53.000000Z"
+                                                    },
+                                                    "created_at": {
+                                                        "type": "string",
+                                                        "example": "2021-12-11T09:25:53.000000Z"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/category/store": {
+            "post": {
+                "tags": [
+                    "Category"
+                ],
+                "summary": "Create Category",
+                "operationId": "713aaeb02e2cc93dbd9bc7e2b738f604",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "": {
+                                        "properties": {
+                                            "name": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "name": "example category name"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "number",
+                                            "example": 1
+                                        },
+                                        "name": {
+                                            "type": "string",
+                                            "example": "name"
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "example": "2021-12-11T09:25:53.000000Z"
+                                        },
+                                        "updated_at": {
+                                            "type": "string",
+                                            "example": "2021-12-11T09:25:53.000000Z"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "exception",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "msg": {
+                                            "type": "string",
+                                            "example": "Ops, Category not created."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/category/find/{id}": {
+            "get": {
+                "tags": [
+                    "Category"
+                ],
+                "summary": "Get Category Details",
+                "operationId": "70a74eff29cfe9bfe1e88a8b1a44b552",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "number",
+                                            "example": 1
+                                        },
+                                        "name": {
+                                            "type": "string",
+                                            "example": "name"
+                                        },
+                                        "updated_at": {
+                                            "type": "string",
+                                            "example": "2021-12-11T09:25:53.000000Z"
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "example": "2021-12-11T09:25:53.000000Z"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "string",
+                                            "example": "failed"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Catagory not found."
+                                        },
+                                        "data": {
+                                            "type": "string",
+                                            "example": "[]"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/category/update/{id}": {
+            "put": {
+                "tags": [
+                    "Category"
+                ],
+                "summary": "Update Category",
+                "operationId": "1a78fdb5858cadd0ff572470d33ce615",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "": {
+                                        "properties": {
+                                            "name": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "name": "example category name"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "number",
+                                            "example": 1
+                                        },
+                                        "name": {
+                                            "type": "string",
+                                            "example": "example category name"
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "example": "2021-12-11T09:25:53.000000Z"
+                                        },
+                                        "updated_at": {
+                                            "type": "string",
+                                            "example": "2021-12-11T09:25:53.000000Z"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/category/delete/{id}": {
+            "delete": {
+                "tags": [
+                    "Category"
+                ],
+                "summary": "Delete Category",
+                "operationId": "f9660aeb5f9deaff3c837b786611da8a",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        },
+        "/api/client/all": {
+            "get": {
+                "tags": [
+                    "Client"
+                ],
+                "summary": "List Clients",
+                "operationId": "02912ccecbdc97bc33f54e505e7288bb",
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "rows": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "number",
+                                                        "example": "1"
+                                                    },
+                                                    "first_name": {
+                                                        "type": "string",
+                                                        "example": "example first_name"
+                                                    },
+                                                    "last_name": {
+                                                        "type": "string",
+                                                        "example": "example last_name"
+                                                    },
+                                                    "email": {
+                                                        "type": "string",
+                                                        "example": "example email"
+                                                    },
+                                                    "birth": {
+                                                        "type": "string",
+                                                        "format": "date",
+                                                        "example": "2022-03-28"
+                                                    },
+                                                    "document_number": {
+                                                        "type": "number",
+                                                        "example": "1234567890"
+                                                    },
+                                                    "active": {
+                                                        "type": "boolean",
+                                                        "example": "true"
+                                                    },
+                                                    "created_at": {
+                                                        "type": "string",
+                                                        "example": "2021-12-11T09:25:53.000000Z"
+                                                    },
+                                                    "updated_at": {
+                                                        "type": "string",
+                                                        "example": "2021-12-11T09:25:53.000000Z"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/client/store": {
+            "post": {
+                "tags": [
+                    "Client"
+                ],
+                "summary": "Create Client",
+                "operationId": "62ac3c1f9fce3f3c3a06535cd9b0ca69",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "": {
+                                        "properties": {
+                                            "first_name": {
+                                                "type": "string",
+                                                "example": "example first name"
+                                            },
+                                            "last_name": {
+                                                "type": "string",
+                                                "example": "example last name"
+                                            },
+                                            "email": {
+                                                "type": "string",
+                                                "example": "example email"
+                                            },
+                                            "birth": {
+                                                "type": "string",
+                                                "format": "date",
+                                                "example": "2022-03-28"
+                                            },
+                                            "document_number": {
+                                                "type": "string",
+                                                "example": 123456789
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "first_name": "example first name",
+                                    "last_name": "example last name",
+                                    "email": "example email",
+                                    "birth": "2022-03-28",
+                                    "document_number": "1234567890"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "number",
+                                            "example": 1
+                                        },
+                                        "first_name": {
+                                            "type": "string",
+                                            "example": "first name"
+                                        },
+                                        "last_name": {
+                                            "type": "string",
+                                            "example": "last name"
+                                        },
+                                        "email": {
+                                            "type": "string",
+                                            "example": "email"
+                                        },
+                                        "birth": {
+                                            "type": "string",
+                                            "format": "date",
+                                            "example": "2022-03-28"
+                                        },
+                                        "document_number": {
+                                            "type": "string",
+                                            "example": "123456789"
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "example": "2021-12-11T09:25:53.000000Z"
+                                        },
+                                        "updated_at": {
+                                            "type": "string",
+                                            "example": "2021-12-11T09:25:53.000000Z"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Exception",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "msg": {
+                                            "type": "string",
+                                            "example": "Ops, Client not created."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/client/find/{id}": {
+            "get": {
+                "tags": [
+                    "Client"
+                ],
+                "summary": "Get Client Details",
+                "operationId": "a1a1480a9e96647f7f471a20d16fb6c9",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "number",
+                                            "example": 1
+                                        },
+                                        "first_name": {
+                                            "type": "string",
+                                            "example": "first name"
+                                        },
+                                        "last_name": {
+                                            "type": "string",
+                                            "example": "last name"
+                                        },
+                                        "email": {
+                                            "type": "string",
+                                            "example": "email"
+                                        },
+                                        "birth": {
+                                            "type": "string",
+                                            "format": "date",
+                                            "example": "2022-03-28"
+                                        },
+                                        "document_number": {
+                                            "type": "string",
+                                            "example": "123456789"
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "example": "2021-12-11T09:25:53.000000Z"
+                                        },
+                                        "updated_at": {
+                                            "type": "string",
+                                            "example": "2021-12-11T09:25:53.000000Z"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "string",
+                                            "example": "failed"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Client not found."
+                                        },
+                                        "data": {
+                                            "type": "string",
+                                            "example": "[]"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/client/update/{id}": {
+            "put": {
+                "tags": [
+                    "Client"
+                ],
+                "summary": "Update Client",
+                "operationId": "6f8f38915a9a8f58c007ad12c5b14679",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "": {
+                                        "properties": {
+                                            "first_name": {
+                                                "type": "string",
+                                                "example": "example first name"
+                                            },
+                                            "last_name": {
+                                                "type": "string",
+                                                "example": "example last name"
+                                            },
+                                            "email": {
+                                                "type": "string",
+                                                "example": "example email"
+                                            },
+                                            "birth": {
+                                                "type": "string",
+                                                "format": "date",
+                                                "example": "2022-03-28"
+                                            },
+                                            "document_number": {
+                                                "type": "string",
+                                                "example": 123456789
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "first_name": "example first name",
+                                    "last_name": "example last name",
+                                    "email": "example email",
+                                    "birth": "2022-03-28",
+                                    "document_number": "1234567890"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        },
+        "/api/client/delete/{id}": {
+            "delete": {
+                "tags": [
+                    "Client"
+                ],
+                "summary": "Delete Client",
+                "operationId": "a7429f0442ed2bd9016d677e567c94a8",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "msg": {
+                                            "type": "string",
+                                            "example": "true"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/rent/all": {
+            "get": {
+                "tags": [
+                    "Rent"
+                ],
+                "summary": "List Rents",
+                "operationId": "2818fad699d56abd035ea118faec6d7b",
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "rows": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "number",
+                                                        "example": "1"
+                                                    },
+                                                    "devolution_date": {
+                                                        "type": "string",
+                                                        "format": "date",
+                                                        "example": "2022-03-28"
+                                                    },
+                                                    "client_id": {
+                                                        "type": "number",
+                                                        "example": "1"
+                                                    },
+                                                    "client_full_name": {
+                                                        "type": "string",
+                                                        "example": "example full name"
+                                                    },
+                                                    "status": {
+                                                        "type": "string",
+                                                        "example": "example: opened or closed"
+                                                    },
+                                                    "total_rent_price": {
+                                                        "type": "decimal",
+                                                        "example": 15.65
+                                                    },
+                                                    "created_at": {
+                                                        "type": "string",
+                                                        "example": "2021-12-11T09:25:53.000000Z"
+                                                    },
+                                                    "updated_at": {
+                                                        "type": "string",
+                                                        "example": "2021-12-11T09:25:53.000000Z"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/rent/store": {
+            "post": {
+                "tags": [
+                    "Rent"
+                ],
+                "summary": "Create Rent",
+                "operationId": "91d64b773ad9343931d6a12072680608",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "": {
+                                        "properties": {
+                                            "devolution_date": {
+                                                "type": "string",
+                                                "format": "date",
+                                                "example": "2022-03-28"
+                                            },
+                                            "client_id": {
+                                                "type": "number",
+                                                "example": "1"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "devolution_date": "2022-03-28",
+                                    "client_id": 1
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "number",
+                                            "example": 1
+                                        },
+                                        "devolution_date": {
+                                            "type": "string",
+                                            "format": "date",
+                                            "example": "2022-03-28"
+                                        },
+                                        "client_id": {
+                                            "type": "number",
+                                            "example": 1
+                                        },
+                                        "client_full_name": {
+                                            "type": "string",
+                                            "example": "Full name"
+                                        },
+                                        "status": {
+                                            "type": "string",
+                                            "example": "opened"
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "example": "2021-12-11T09:25:53.000000Z"
+                                        },
+                                        "updated_at": {
+                                            "type": "string",
+                                            "example": "2021-12-11T09:25:53.000000Z"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "invalid",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "msg": {
+                                            "type": "string",
+                                            "example": "fail"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/rent/find/{id}": {
+            "get": {
+                "tags": [
+                    "Rent"
+                ],
+                "summary": "Get Rent Details",
+                "operationId": "b78da48db8ddd19201813d4274eee582",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "number",
+                                            "example": 1
+                                        },
+                                        "devolution_date": {
+                                            "type": "string",
+                                            "format": "date",
+                                            "example": "2022-03-28"
+                                        },
+                                        "client_id": {
+                                            "type": "number",
+                                            "example": 1
+                                        },
+                                        "client_full_name": {
+                                            "type": "string",
+                                            "example": "Full name"
+                                        },
+                                        "status": {
+                                            "type": "string",
+                                            "example": "opened"
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "example": "2021-12-11T09:25:53.000000Z"
+                                        },
+                                        "updated_at": {
+                                            "type": "string",
+                                            "example": "2021-12-11T09:25:53.000000Z"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "string",
+                                            "example": "failed"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Rent not found."
+                                        },
+                                        "data": {
+                                            "type": "string",
+                                            "example": "[]"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/rent/update/{id}": {
+            "put": {
+                "tags": [
+                    "Rent"
+                ],
+                "summary": "Update Rent",
+                "operationId": "b244102f8389f55350999a48aeabcc83",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "devolution_date": {
+                                        "type": "string",
+                                        "format": "date",
+                                        "example": "2022-03-28"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        },
+        "/api/rent/delete/{id}": {
+            "delete": {
+                "tags": [
+                    "Rent"
+                ],
+                "summary": "Delete Rent",
+                "operationId": "1e75efe8bad00dc6ac796d46a324b95b",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    },
+                    "404": {
+                        "description": "Not found.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "string",
+                                            "example": "failed"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Rent not found."
+                                        },
+                                        "data": {
+                                            "type": "string",
+                                            "example": "[]"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/rent/close/{id}": {
+            "delete": {
+                "tags": [
+                    "Rent"
+                ],
+                "summary": "Close Rent",
+                "operationId": "ab7fbd87947c37a9624c60e856a9989c",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "The rent is closed successfully."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "invalid",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "string",
+                                            "example": "failed"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Rent not found."
+                                        },
+                                        "data": {
+                                            "type": "string",
+                                            "example": "[]"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/rent_detail/all": {
+            "get": {
+                "tags": [
+                    "Rent Details"
+                ],
+                "summary": "List Rent Details",
+                "operationId": "5613dcdbbc603d08119a8bfebfcd95e8",
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "rows": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "number",
+                                                        "example": 1
+                                                    },
+                                                    "rent_id": {
+                                                        "type": "number",
+                                                        "example": 1
+                                                    },
+                                                    "rent_status": {
+                                                        "type": "string",
+                                                        "example": "example: opened or closed"
+                                                    },
+                                                    "book_id": {
+                                                        "type": "number",
+                                                        "example": 1
+                                                    },
+                                                    "book_title": {
+                                                        "type": "string",
+                                                        "example": "example book_title"
+                                                    },
+                                                    "book_price": {
+                                                        "type": "decimal",
+                                                        "example": 15.95
+                                                    },
+                                                    "created_at": {
+                                                        "type": "string",
+                                                        "example": "2021-12-11T09:25:53.000000Z"
+                                                    },
+                                                    "updated_at": {
+                                                        "type": "string",
+                                                        "example": "2021-12-11T09:25:53.000000Z"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/rent_detail/store": {
+            "post": {
+                "tags": [
+                    "Rent Details"
+                ],
+                "summary": "Add Rent Details",
+                "operationId": "e3a9a216de4c66fad694c303d25812ed",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "": {
+                                        "properties": {
+                                            "book_id": {
+                                                "type": "number",
+                                                "example": 1
+                                            },
+                                            "rent_id": {
+                                                "type": "number",
+                                                "example": "1"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "book_id": 78,
+                                    "rent_id": 50
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "number",
+                                            "example": 46
+                                        },
+                                        "rent_id": {
+                                            "type": "number",
+                                            "example": 50
+                                        },
+                                        "rent_status": {
+                                            "type": "string",
+                                            "example": "opened"
+                                        },
+                                        "book_id": {
+                                            "type": "number",
+                                            "example": 78
+                                        },
+                                        "book_title": {
+                                            "type": "string",
+                                            "example": "hy in Niue - I"
+                                        },
+                                        "book_price": {
+                                            "type": "decimal",
+                                            "example": 372.68
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "example": "2021-12-11T09:25:53.000000Z"
+                                        },
+                                        "updated_at": {
+                                            "type": "string",
+                                            "example": "2021-12-11T09:25:53.000000Z"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "invalid",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "string",
+                                            "example": "failed"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "The informed book already rent."
+                                        },
+                                        "data": {
+                                            "type": "string",
+                                            "example": "[]"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "invalid",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "string",
+                                            "example": "failed"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Ops, Rent detail was not created."
+                                        },
+                                        "data": {
+                                            "type": "string",
+                                            "example": "[]"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/rent_detail/find/{id}": {
+            "get": {
+                "tags": [
+                    "Rent Details"
+                ],
+                "summary": "Get Rent Details",
+                "operationId": "b8bc2d92657c1622cf6366432c930b85",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "number",
+                                            "example": 1
+                                        },
+                                        "rent_id": {
+                                            "type": "number",
+                                            "example": 1
+                                        },
+                                        "book_id": {
+                                            "type": "number",
+                                            "example": 1
+                                        },
+                                        "book_title": {
+                                            "type": "string",
+                                            "example": "example book title"
+                                        },
+                                        "book_price": {
+                                            "type": "string",
+                                            "example": "example book price"
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "example": "2021-12-11T09:25:53.000000Z"
+                                        },
+                                        "updated_at": {
+                                            "type": "string",
+                                            "example": "2021-12-11T09:25:53.000000Z"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/rent_details/delete/{id}": {
+            "delete": {
+                "tags": [
+                    "Rent Details"
+                ],
+                "summary": "Remove Rent Details",
+                "operationId": "302cbceff864ed12cd3489e96cf53cea",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "404": {
+                        "description": "invalid",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "string",
+                                            "example": "failed"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Rent detail not found."
+                                        },
+                                        "data": {
+                                            "type": "string",
+                                            "example": "[]"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "Does not allow deleting a book from an already closed rental.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "string",
+                                            "example": "failed"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Rent detail was success deleted."
+                                        },
+                                        "data": {
+                                            "type": "string",
+                                            "example": "[]"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "security": [
+        []
+    ]
+}

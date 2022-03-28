@@ -1,0 +1,33 @@
+version: "3.7"
+services:
+  # container back-end da aplicação
+  api-library-back:
+    container_name: api-library-back
+    build:
+      context: .
+      dockerfile: back-end.Dockerfile
+    volumes:
+      - php-dados:/var/www/html
+    ports:
+      - 8001:80
+    networks:
+      - net-library
+
+  api-library-db:
+    container_name: api-library-db
+    image: mysql:5.6
+    volumes:
+      - data-base-mysql:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=library
+    networks:
+      - net-library
+
+networks:
+  net-library:
+    driver: bridge
+
+volumes:
+  php-dados:
+  data-base-mysql:
