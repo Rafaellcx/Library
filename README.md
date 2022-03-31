@@ -21,6 +21,13 @@ After downloading the **library** repository, being in its main folder, go up th
 ```sh 
 docker-compose up --build
 ```
+After finishing the creation of the containers, we must execute the commands below so that the environment is ready to be used:
+
+1. Used to populate the database with the necessary tables of the solution:
+   ```sh 
+   docker exec -ti api-m2-back php artisan migrate
+   ```
+   
 Now we can use the application through the address "http://127.0.0.1:8001/api/documentation"
 If you want to run the application later, check if the `api-library-back` container is active
 executing the following command (Remembering that the same can/must be applied to the container
